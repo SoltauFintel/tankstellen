@@ -1,0 +1,34 @@
+#parse("/templates/master.html")
+#@master()
+
+<div class="row">
+	<h1 class="page-header">Tankstelle bearbeiten</h1>
+	<div class="col-lg-6">
+		<form action="/tankstellespeichern/${ta.id}" class="form-horizontal">
+			<fieldset>
+				<div class="form-group">
+					<label for="bezeichnung" class="col-lg-2 control-label">Bezeichnung</label>
+					<div class="col-lg-10">
+						<input class="form-control" id="bezeichnung" type="text" name="bezeichnung" autofocus="autofocus"
+							value="$ta.bezeichnung">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="nummer" class="col-lg-2 control-label">Nummer</label>
+					<div class="col-lg-2">
+						<input class="form-control" id="nummer" type="text" name="nummer" value="$ta.nummer">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-10 col-lg-offset-2">
+						<button type="submit" class="btn btn-primary">Speichern</button>
+						<a href="/loeschen/$ta.id" class="btn btn-danger rbtn" style="margin-left: 1em;"><i
+							class="fa fa-remove fa-fw"></i> L&ouml;schen</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+#end

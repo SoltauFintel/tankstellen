@@ -1,0 +1,8 @@
+port=8008
+development=true
+
+host=http://localhost:8008
+facebook.state=
+facebook.key=
+facebook.secret=
+facebook.url=https://graph.facebook.com/v2.9/me
