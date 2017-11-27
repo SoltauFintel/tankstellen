@@ -1,4 +1,4 @@
-package github.soltaufintel.tankstellen.pages;
+package github.soltaufintel.tankstellen.actions;
 
 import de.mwvb.maja.web.ActionBase;
 import github.soltaufintel.tankstellen.TankstellenApp;

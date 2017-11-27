@@ -3,16 +3,17 @@ package github.soltaufintel.tankstellen;
 import de.mwvb.maja.auth.AuthPlugin;
 import de.mwvb.maja.auth.facebook.FacebookAuthorization;
 import de.mwvb.maja.auth.facebook.FacebookFeature;
+import de.mwvb.maja.auth.rememberme.KnownUser;
 import de.mwvb.maja.auth.rememberme.RememberMeInMongoDB;
 import de.mwvb.maja.mongo.Database;
 import de.mwvb.maja.web.AbstractWebApp;
+import github.soltaufintel.tankstellen.actions.Bearbeiten;
+import github.soltaufintel.tankstellen.actions.BearbeitenSpeichern;
+import github.soltaufintel.tankstellen.actions.Index;
+import github.soltaufintel.tankstellen.actions.Loeschen;
+import github.soltaufintel.tankstellen.actions.Neu;
+import github.soltaufintel.tankstellen.actions.Speichern;
 import github.soltaufintel.tankstellen.model.Tankstelle;
-import github.soltaufintel.tankstellen.pages.Bearbeiten;
-import github.soltaufintel.tankstellen.pages.BearbeitenSpeichern;
-import github.soltaufintel.tankstellen.pages.Index;
-import github.soltaufintel.tankstellen.pages.Loeschen;
-import github.soltaufintel.tankstellen.pages.Neu;
-import github.soltaufintel.tankstellen.pages.Speichern;
 import spark.Request;
 
 /**
@@ -40,7 +41,7 @@ public class TankstellenApp extends AbstractWebApp {
 	@Override
 	protected void initDatabase() {
 		database = new Database(config.get("dbhost", "localhost"), config.get("dbname", DBNAME),
-				config.get("dbuser"), config.get("dbpw"), Tankstelle.class);
+				config.get("dbuser"), config.get("dbpw"), Tankstelle.class, KnownUser.class);
 	}
 	
 	@Override

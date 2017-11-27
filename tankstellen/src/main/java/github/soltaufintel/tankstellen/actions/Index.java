@@ -1,4 +1,4 @@
-package github.soltaufintel.tankstellen.pages;
+package github.soltaufintel.tankstellen.actions;
 
 import java.util.List;
 
