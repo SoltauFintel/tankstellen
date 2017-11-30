@@ -29,7 +29,7 @@ public class Speichern extends ActionBase {
 		ta.setBezeichnung(bezeichnung);
 		ta.setNummer(nummer);
 		
-		TankstelleDAO dao = new TankstelleDAO(TankstellenApp.database);
+		TankstelleDAO dao = new TankstelleDAO();
 		dao.save(ta);
 
 		res.redirect("/");
