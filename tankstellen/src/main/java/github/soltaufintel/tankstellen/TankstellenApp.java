@@ -1,10 +1,7 @@
 package github.soltaufintel.tankstellen;
 
 import de.mwvb.maja.auth.AuthPlugin;
-import de.mwvb.maja.auth.facebook.FacebookAuthorization;
-import de.mwvb.maja.auth.facebook.FacebookFeature;
-import de.mwvb.maja.auth.rememberme.KnownUser;
-import de.mwvb.maja.auth.rememberme.RememberMeInMongoDB;
+import de.mwvb.maja.auth.rememberme.AuthPluginWithRememberMe;
 import de.mwvb.maja.mongo.MongoPlugin;
 import de.mwvb.maja.web.AbstractWebApp;
 import github.soltaufintel.tankstellen.actions.Bearbeiten;
@@ -21,19 +18,14 @@ import spark.Request;
  */
 public class TankstellenApp extends AbstractWebApp {
 	public static final String VERSION = "0.2.0";
-	public static final String DBNAME = "tankstellen";
 	
 	public static void main(String[] args) {
 		new TankstellenApp().start(
 				VERSION,
-				new MongoPlugin(DBNAME, Tankstelle.class, KnownUser.class),
-				new AuthPlugin(
-						new FacebookAuthorization(),
-						new FacebookFeature(),
-						new RememberMeInMongoDB("Tankstellen"))
-				);
+				new MongoPlugin(Tankstelle.class),
+				new AuthPluginWithRememberMe());
 	}
-
+	
 	@Override
 	protected void routes() {
 		_get("/", Index.class);

@@ -14,8 +14,6 @@ distZip.enabled = false
 
 dependencies {
 	compile 'com.github.SoltauFintel:maja-auth-mongo:0.2.0'
-
-	testCompile 'junit:junit:4.12' 
 }
 
 repositories {
