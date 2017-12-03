@@ -6,6 +6,7 @@ import de.mwvb.maja.mongo.MongoPlugin;
 import de.mwvb.maja.web.AbstractWebApp;
 import github.soltaufintel.tankstellen.actions.Bearbeiten;
 import github.soltaufintel.tankstellen.actions.BearbeitenSpeichern;
+import github.soltaufintel.tankstellen.actions.TestTimer;
 import github.soltaufintel.tankstellen.actions.Index;
 import github.soltaufintel.tankstellen.actions.Loeschen;
 import github.soltaufintel.tankstellen.actions.Neu;
@@ -35,7 +36,12 @@ public class TankstellenApp extends AbstractWebApp {
 		_get("/tankstellespeichern/:id", BearbeitenSpeichern.class);
 		_get("/loeschen/:id", Loeschen.class);
 	}
-
+	
+	@Override
+	protected void init() {
+		startTimer(TestTimer.class);
+	}
+	
 	public static String getUserId(Request req) {
 		String userId = AuthPlugin.getUserId(req.session());
 		if (userId == null || userId.isEmpty()) {
