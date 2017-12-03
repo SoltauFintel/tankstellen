@@ -27,6 +27,9 @@
 	<target name="dep">
 		<gradle task="dep"/>
 	</target>
+	<target name="jar">
+		<gradle task="jar"/>
+	</target>
 
 	<macrodef name="gradle">
 		<attribute name="task"/>
