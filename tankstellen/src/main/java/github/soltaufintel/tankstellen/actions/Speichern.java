@@ -3,7 +3,6 @@ package github.soltaufintel.tankstellen.actions;
 import com.google.inject.Inject;
 
 import de.mwvb.maja.web.ActionBase;
-import github.soltaufintel.tankstellen.TankstellenApp;
 import github.soltaufintel.tankstellen.model.Tankstelle;
 import github.soltaufintel.tankstellen.model.TankstelleDAO;
 
@@ -29,7 +28,7 @@ public class Speichern extends ActionBase {
 
 		Tankstelle ta = new Tankstelle();
 		ta.setId(TankstelleDAO.code6(TankstelleDAO.genId()));
-		ta.setUserId(TankstellenApp.getUserId(req));
+		ta.setUserId(getUserId());
 		ta.setBezeichnung(bezeichnung);
 		ta.setNummer(nummer);
 		
