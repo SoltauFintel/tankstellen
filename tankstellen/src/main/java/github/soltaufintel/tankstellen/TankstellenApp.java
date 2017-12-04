@@ -36,6 +36,6 @@ public class TankstellenApp extends AbstractWebApp {
 	
 	@Override
 	protected void init() {
-		startTimer(TestTimer.class);
+//		startTimer(TestTimer.class);
 	}
 }
