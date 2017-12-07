@@ -55,7 +55,7 @@ public class TankstellenApp extends AbstractWebApp {
 		auth = new AuthPlugin(
 				new FacebookAuthorization(),
 				new FacebookFeature(),
-				new RememberMeInMongoDB(database));
+				new RememberMeInMongoDB(database, "tankstellen"));
 	}
 
 	public static String getUserId(Request req) {
