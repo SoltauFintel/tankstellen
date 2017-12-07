@@ -16,7 +16,7 @@ public class TankstelleTest {
 	
 	@Test
 	public void test() {
-		TankstelleDAO dao = new TankstelleDAO(TankstellenApp.database);
+		TankstelleDAO dao = new TankstelleDAO();
 
 		Tankstelle star = new Tankstelle();
 		star.setNummer(1);

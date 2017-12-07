@@ -1,10 +1,8 @@
 package github.soltaufintel.tankstellen;
 
 import de.mwvb.maja.auth.AuthPlugin;
-import de.mwvb.maja.auth.facebook.FacebookAuthorization;
-import de.mwvb.maja.auth.facebook.FacebookFeature;
+import de.mwvb.maja.auth.rememberme.AuthPluginWithRememberMe;
 import de.mwvb.maja.auth.rememberme.KnownUser;
-import de.mwvb.maja.auth.rememberme.RememberMeInMongoDB;
 import de.mwvb.maja.mongo.Database;
 import de.mwvb.maja.web.AbstractWebApp;
 import github.soltaufintel.tankstellen.actions.Bearbeiten;
@@ -20,7 +18,7 @@ import spark.Request;
  * Example web app for Maja web framework
  */
 public class TankstellenApp extends AbstractWebApp {
-	public static final String VERSION = "0.1.0";
+	public static final String VERSION = "0.2.0";
 	public static Database database;
 	public static final String DBNAME = "tankstellen";
 	
@@ -40,22 +38,12 @@ public class TankstellenApp extends AbstractWebApp {
 
 	@Override
 	protected void initDatabase() {
-		database = new Database(config.get("dbhost", "localhost"), config.get("dbname", DBNAME),
-				config.get("dbuser"), config.get("dbpw"), Tankstelle.class, KnownUser.class);
-	}
-	
-	@Override
-	protected String getDatabaseInfo() {
-		return "MongoDB database: " + config.get("dbname", DBNAME) + "@" + config.get("dbhost", "localhost")
-			+ (config.get("dbpw") == null ? "" : " with password");
+		Database.open(Tankstelle.class, KnownUser.class);
 	}
 	
 	@Override
 	protected void init() {
-		auth = new AuthPlugin(
-				new FacebookAuthorization(),
-				new FacebookFeature(),
-				new RememberMeInMongoDB(database, "tankstellen"));
+		auth = new AuthPluginWithRememberMe();
 	}
 
 	public static String getUserId(Request req) {

@@ -12,7 +12,7 @@ public class Index extends Action {
 	@Override
 	protected void execute() {
 		String userId = TankstellenApp.getUserId(req);
-		TankstelleDAO dao = new TankstelleDAO(TankstellenApp.database);
+		TankstelleDAO dao = new TankstelleDAO();
 		List<Tankstelle> tankstellen = dao.findByUser(userId);
 		put("tankstellen", tankstellen);
 	}

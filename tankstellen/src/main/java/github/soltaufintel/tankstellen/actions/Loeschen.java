@@ -10,8 +10,8 @@ public class Loeschen extends ActionBase {
 	@Override
 	public String run() {
 		String id = req.params("id"); // $unsafe (Query injection?)
-		TankstelleDAO dao = new TankstelleDAO(TankstellenApp.database);
-		Tankstelle ta = dao.findById(id);
+		TankstelleDAO dao = new TankstelleDAO();
+		Tankstelle ta = dao.get(id);
 		if (ta == null || !ta.getUserId().equals(TankstellenApp.getUserId(req))) {
 			throw new RuntimeException("Sie haben keinen Zugriff auf diesen Datensatz!");
 		}
