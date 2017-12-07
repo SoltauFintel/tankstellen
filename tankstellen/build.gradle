@@ -12,13 +12,8 @@ compileTestJava.options.encoding = 'windows-1252'
 mainClassName = 'github.soltaufintel.tankstellen.TankstellenApp'
 distZip.enabled = false
 
-configurations.all {
-	resolutionStrategy {
-		force 'com.github.SoltauFintel:maja-web:master-SNAPSHOT'
-	}
-}
 dependencies {
-	compile 'com.github.SoltauFintel:maja-auth-mongo:master-SNAPSHOT'
+	compile 'com.github.SoltauFintel:maja-auth-mongo:851299c'
 }
 
 repositories {
