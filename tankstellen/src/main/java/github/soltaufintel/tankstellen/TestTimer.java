@@ -1,4 +1,4 @@
-package github.soltaufintel.tankstellen;
+package github.soltaufintel.tankstellen.actions;
 
 import org.quartz.SchedulerException;
 

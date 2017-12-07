@@ -1,15 +1,18 @@
 package github.soltaufintel.tankstellen;
 
+import de.mwvb.maja.auth.AuthPlugin;
 import de.mwvb.maja.auth.rememberme.AuthPluginWithRememberMe;
 import de.mwvb.maja.mongo.MongoPlugin;
 import de.mwvb.maja.web.AbstractWebApp;
 import github.soltaufintel.tankstellen.actions.Bearbeiten;
 import github.soltaufintel.tankstellen.actions.BearbeitenSpeichern;
+import github.soltaufintel.tankstellen.actions.TestTimer;
 import github.soltaufintel.tankstellen.actions.Index;
 import github.soltaufintel.tankstellen.actions.Loeschen;
 import github.soltaufintel.tankstellen.actions.Neu;
 import github.soltaufintel.tankstellen.actions.Speichern;
 import github.soltaufintel.tankstellen.model.Tankstelle;
+import spark.Request;
 
 /**
  * Example web app for Maja web framework
@@ -37,5 +40,13 @@ public class TankstellenApp extends AbstractWebApp {
 	@Override
 	protected void init() {
 		startTimer(TestTimer.class);
+	}
+	
+	public static String getUserId(Request req) {
+		String userId = AuthPlugin.getUserId(req.session());
+		if (userId == null || userId.isEmpty()) {
+			throw new RuntimeException("User Id ist leer!"); // Programmschutz
+		}
+		return userId;
 	}
 }
